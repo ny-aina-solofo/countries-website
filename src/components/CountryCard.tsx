@@ -15,8 +15,8 @@ const CountryCard =({ flags,name,population,region,subregion }:CountryCardProps)
     return (
         <div className="">
             <Link 
-            //    href={`/details/${name.common}/`}
-               href="details"
+               href={`/details/${name.common}/`}
+            //    href="details"
             >
                 <article className="rounded-lg shadow-xl overflow-hidden h-full">
                     <Image
