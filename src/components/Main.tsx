@@ -21,7 +21,7 @@ const Main = ()=> {
     return (
         <main>
             <section className="px-20 mt-12 flex flex-wrap justify-between gap-4">
-                <SearchBar />
+                <SearchBar setCountries={setCountries}/>
                 <Filter />
             </section>
             <div className="grid grid-rows-[min-content] gap-8 p-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
