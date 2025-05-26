@@ -1,7 +1,21 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* @custom-variant dark (&:where(.dark, .dark *)); */
+@theme {
+	/* --font-Nunito:'Nunito Sans'; */
+
+	/* Light Theme */
+  --color-Light-Mode-Text:hsl(200, 15%, 8%);
+  --color-Light-Mode-Input:hsl(0, 0%, 50%);
+  --color-Light-Mode-Background:hsl(233, 11%, 95%);
+  
+  /*Dark Theme */
+  --color-Dark-Mode-Elements:hsl(209, 23%, 22%);
+  --color-Dark-Mode-Background:hsl(207, 26%, 17%);
+
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;

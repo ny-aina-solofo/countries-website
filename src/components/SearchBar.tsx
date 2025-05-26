@@ -3,55 +3,60 @@
 import React,{ useState, useEffect } from "react";
 import iconSearch from "@/assets/search-sharp.svg";
 
-type searchCountrProps = {
-    setCountries: (data:any) => void;
+type searchCountriesProps = {
+    onChangeCallback: (data:any) => void;
 };
 
-const SearchBar = ({setCountries}:searchCountrProps)=> {
+const SearchBar = ({onChangeCallback}:searchCountriesProps)=> {
     const [searchText, setSearchText] = useState("");
-
-    const getSingleCountry = async () => {
-        try {
-            const response = await fetch(`https://restcountries.com/v3.1/name/${searchText}`);
-            const data = await response.json();
-            setCountries(data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
+    
     const searchCountry = (e:any) =>{
         e.preventDefault();
-        getSingleCountry();
+        const searchTerm = e.target.value
+        setSearchText(searchTerm);
+        onChangeCallback && onChangeCallback(searchTerm);    
     }
-        
-    
+    const resetSearch =()=>{
+        setSearchText("");
+        onChangeCallback("");
+    }
     return (
-        <div className="">
-            <form
-              onSubmit={searchCountry}
-              autoComplete="on"
-              className="max-w-4xl md:flex-1"
+        <form
+            onSubmit={searchCountry}
+            autoComplete="off"
+        >
+            <div className="flex bg-white items-center justify-between border-none 
+                    rounded-lg max-w-4xl dark:bg-Dark-Mode-Elements p-2     
+                "
             >
-                <img className="" src={iconSearch.src} width="20px" height="20px" alt="search icon" />
-                <input
-                    type="text"
-                    className="py-3 px-4 text-gray-600 placeholder-gray-600 w-full shadow-lg rounded outline-none 
-                         
-                        transition-all duration-200"
-                    placeholder="Search for a country..."
-                    value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
-                    aria-label="Search for a country"
-                />
-            </form>
-            {/* <button
-                className="ms-2 p-2 rounded-lg shadow-lg cursor-pointer"
-                onClick={searchCountry}
-            >
-                <img className="" src={iconSearch.src} width="20px" height="20px" alt="search icon" />
-            </button> */}
-      </div>
+                    <img className="" src={iconSearch.src} width="20px" height="20px" alt="search icon" />
+                    <input
+                        type="text"
+                        className="py-3 px-4 text-gray-600 placeholder-gray-600 w-full 
+                            rounded outline-none transition-all duration-200
+                            dark:placeholder-white dark:text-white
+                        "
+                        placeholder="Search for a country..."
+                        value={searchText}
+                        // onChange={(e) => setSearchText(e.target.value)}
+                        onChange={searchCountry}
+                        aria-label="Search for a country"
+                    />
+                    {searchText !== "" && (
+                        <button
+                            type="button"
+                            className="bg-Light-Mode-Background items-center py-1 px-2 rounded-full cursor-pointer
+                                bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-white 
+                                hover:bg-gray-300 dark:hover:bg-gray-600 
+                                transition duration-200 ease-in-out
+                            "
+                            onClick={resetSearch}
+                        >
+                            x
+                        </button>
+                    )}
+            </div>
+        </form>
     )
 }
 

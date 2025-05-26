@@ -13,12 +13,12 @@ type CountryCardProps = {
 
 const CountryCard =({ flags,name,population,region,subregion }:CountryCardProps) => {
     return (
-        <div className="">
+        <div className="bg-white rounded-lg overflow-hidden h-full dark:bg-Dark-Mode-Elements dark:text-white">
             <Link 
                href={`/details/${name.common}/`}
             //    href="details"
             >
-                <article className="rounded-lg shadow-xl overflow-hidden h-full">
+                <article className="">
                     <Image
                         src={flags.svg} alt={`Flag of ${name.common}`}         
                         width={264}

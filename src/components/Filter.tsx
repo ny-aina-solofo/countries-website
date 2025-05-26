@@ -3,7 +3,9 @@ import React from 'react'
 const Filter = ({ }) => {
     return (
         <select 
-            className="w-52 py-3 px-4 outline-none shadow-xl rounded text-gray-600 "
+            className="bg-white w-52 py-3 px-4 outline-none rounded-lg text-gray-600 
+                dark:bg-Dark-Mode-Elements dark:text-white    
+            "
             name="filter" id="filter" 
             // onChange={regionFilter}
         >
