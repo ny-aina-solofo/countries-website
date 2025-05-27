@@ -1,6 +1,7 @@
 export interface CountriesState {
     allCountries: any[];
     filteredCountries: any[];
+    selectedCountry: any | null;
 }
   
 export type CountriesAction =
@@ -8,6 +9,7 @@ export type CountriesAction =
     | { type: "filter_by_region"; value: string }
     | { type: "filter_by_name"; value: string }
     | { type: "display_all_items"}
+    | { type: "get_country_details";value:any}
   
 export const countriesReducer = (
     state: CountriesState,
@@ -20,6 +22,15 @@ export const countriesReducer = (
                 allCountries: action.data,
                 filteredCountries: action.data
             };
+        case "get_country_details":
+            const selected = state.allCountries.find(
+                (country: any) => country.name.common === action.value
+            );
+            return {
+                ...state,
+                selectedCountry: selected || null,
+            };
+            
         case 'display_all_items':
             return { 
                 ...state, 

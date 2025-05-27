@@ -5,13 +5,14 @@ import { countriesReducer,CountriesAction} from "./reducer";
 import { ThemeProvider } from "./ThemeProvider";
 
 
-const CountriesContext = createContext<{ filteredCountries: any[] } | undefined>(undefined);
+const CountriesContext = createContext<{ filteredCountries: any[]; selectedCountry: any } | undefined>(undefined);
 const CountriesDispatchContext = createContext<Dispatch<CountriesAction> | undefined>(undefined);
 
 export const CountriesProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(countriesReducer,{
 		allCountries: [],
-		filteredCountries: []
+		filteredCountries: [],
+        selectedCountry: []
 	});
     useEffect(()=>{
         const getCountries = async() => {
@@ -22,7 +23,12 @@ export const CountriesProvider = ({ children }: { children: React.ReactNode }) =
         getCountries();
     },[]);        
     return (
-        <CountriesContext.Provider value={{ filteredCountries: state.filteredCountries}}>
+        <CountriesContext.Provider 
+            value={{ 
+                filteredCountries: state.filteredCountries,
+                selectedCountry: state.selectedCountry
+            }}
+        >
             <CountriesDispatchContext.Provider value={dispatch}>
                 <ThemeProvider>{children}</ThemeProvider>    
             </CountriesDispatchContext.Provider>

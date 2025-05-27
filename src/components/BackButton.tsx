@@ -1,16 +1,17 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-// import { ArrowLeftIcon } from "./Icons";
+import iconBack from "@/assets/chevron-back-outline.svg";
 
 const BackButton = () => {
     const router = useRouter();
     return (
         <button
-            className="w-fit my-8 flex items-center gap-2 rounded-md p-4 shadow-lg cursor-pointer"
+            className="bg-white flex items-center rounded-md py-3 px-6 cursor-pointer
+                dark:bg-Dark-Mode-Elements dark:text-white"
             onClick={() => router.back()}
         >
-            {/* <ArrowLeftIcon width={16} height={16} fill="currentColor" /> */}
-            <span>Back</span>
+            <img className="" src={iconBack.src} width="20px" height="20px" alt="search icon" />
+            <span className="ms-4">Back</span>
         </button>
     );
 };

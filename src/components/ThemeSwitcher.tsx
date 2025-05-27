@@ -18,42 +18,8 @@ const ThemeSwitcher = () => {
         }
     };
 
-    
-    
-    // const [isDarkMode, setIsDarkMode] = useState(false);
-    
-    // useEffect(() => {
-    //     if (savedTheme) {
-    //         setIsDarkMode(true);
-    //         root.classList.add("dark");
-    //     } else {
-    //         root.classList.remove("dark");
-    //     }
-    // }, [savedTheme]);
-
-    // useLayoutEffect(() => {
-    //     const savedTheme = localStorage.getItem('theme') === 'dark';
-    //     setIsDarkMode(true);
-    //     if (isDarkMode && savedTheme) {
-    //         document.body.classList.add('dark');
-    //     } else {
-    //         document.body.classList.remove('dark');
-    //     }
-    // }, [isDarkMode]);
-
-    // const handleDarkMode = () => {
-    //     const newTheme = !isDarkMode;
-    //     setIsDarkMode(newTheme);
-    //     if (newTheme) {
-    //         document.body.classList.add('dark');
-    //         localStorage.setItem('theme', 'dark');
-    //     } else {
-    //         document.body.classList.remove('dark');
-    //         localStorage.removeItem('theme');
-    //     }
-    // };
     return (
-        <div className="flex gap-2 cursor-pointer" onClick={handleDarkMode}>
+        <div className="flex gap-2 cursor-pointer px-4" onClick={handleDarkMode}>
             <div>
                 <img className="bg-black" src={theme === "dark" ? iconMoon.src : iconSun.src} alt="theme icon" />
             </div>
