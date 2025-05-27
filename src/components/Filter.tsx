@@ -1,19 +1,21 @@
 "use client"
 
 import React,{ useState, useEffect } from "react";
+import { useCountries,useCountriesDispatch } from "@/context/countriesProvider";
 
-type searchCountriesProps = {
-    onChangeCallback: (data:any) => void;
-};
-
-const Filter = ({onChangeCallback}:searchCountriesProps) => {
+const Filter = () => {
     const [selectedValue, setSelectedValue] = useState('');
+    const dispatch = useCountriesDispatch();
 
     const handleSelectChange = (e:any) => {
         e.preventDefault();
         const value = e.target.value;
         setSelectedValue(value);
-        onChangeCallback && onChangeCallback(value);
+        if (value === "All") {
+            dispatch({type: 'display_all_items'});
+        } else {
+            dispatch({type: 'filter_by_region', value: value || [] });
+        }
     };
     
     return (
@@ -29,7 +31,7 @@ const Filter = ({onChangeCallback}:searchCountriesProps) => {
                 value={selectedValue} 
                 onChange={handleSelectChange}
             >
-                <option value="All">All</option>
+                <option value="All" defaultValue="All">All</option>
                 <option value="Africa">Africa</option>
                 <option value="Americas">America</option>
                 <option value="Asia">Asia</option>

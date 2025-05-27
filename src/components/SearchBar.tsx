@@ -2,23 +2,21 @@
 
 import React,{ useState, useEffect } from "react";
 import iconSearch from "@/assets/search-sharp.svg";
+import { useCountries,useCountriesDispatch } from "@/context/countriesProvider";
 
-type searchCountriesProps = {
-    onChangeCallback: (data:any) => void;
-};
-
-const SearchBar = ({onChangeCallback}:searchCountriesProps)=> {
+const SearchBar = ()=> {
+    const dispatch = useCountriesDispatch();
     const [searchText, setSearchText] = useState("");
     
     const searchCountry = (e:any) =>{
         e.preventDefault();
         const searchTerm = e.target.value
         setSearchText(searchTerm);
-        onChangeCallback && onChangeCallback(searchTerm);    
+        dispatch({type: 'filter_by_name', value: searchTerm || [] });
     }
     const resetSearch =()=>{
         setSearchText("");
-        onChangeCallback("");
+        dispatch({type: 'display_all_items'});
     }
     return (
         <form
