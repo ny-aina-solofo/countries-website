@@ -47,7 +47,7 @@ export const countriesReducer = (
             return { 
                 ...state, 
                 filteredCountries: state.allCountries.filter((country: any) =>
-                    country.name.common.toLowerCase().includes(action.value.toLowerCase())
+                    country.name.common.includes(action.value)
                 )
             };
 
