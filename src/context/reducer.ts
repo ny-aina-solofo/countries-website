@@ -52,7 +52,7 @@ export const countriesReducer = (
             };
 
         default:
-            throw Error('Unknown action: ' + action);;
+            throw Error('Unknown action: ' + action);
     }
 };
   

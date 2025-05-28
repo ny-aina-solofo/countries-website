@@ -46,7 +46,7 @@ const CountryDetails =({ })=> {
                             </h3>
                             <ul className="flex flex-wrap items-start justify-start gap-2">
                                 {item.borders.length > 0 ? (
-                                    item.borders.map((border : string, index : number) => (
+                                    item.borders.map((border:string, index:number) => (
                                         <li
                                             key={index}
                                             className="bg-white py-3 px-4 rounded-md text-xs tracking-wide shadow-lg 
