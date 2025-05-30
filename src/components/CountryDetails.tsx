@@ -1,18 +1,55 @@
-"use client"
+ "use client"
 
 import React,{ useState, useEffect } from "react";
 import BackButton from './BackButton';
-import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useCountries,useCountriesDispatch } from "@/context/countriesProvider";
+import Link from "next/link";
 
 const CountryDetails =({ })=> {
+    
+    const dispatch = useCountriesDispatch();
     const { selectedCountry } = useCountries();
 
     if (!selectedCountry) {
         return <div className="p-8">Aucun pays sélectionné.</div>;
     }
     const item = selectedCountry;
+
+    const countries = useCountries();
+    const { filteredCountries } = countries;
+    const selectedBorders = item.borders;
+    
+    const renderBorders= ()=> {
+        if (!selectedBorders || selectedBorders.length === 0 || selectedBorders === undefined) {
+            return <p>No Borders</p>;
+        }
+        const bordersList = selectedBorders.map((border:string) => {
+            const bordersName = filteredCountries.find((countries) => countries.cca3 === border);
+            return bordersName;
+        });
+        return (
+            <>
+                <h3 className="text-gray-900 font-bold text-lg mb-2 dark:text-white">
+                    Borders :
+                </h3>
+                <ul className="flex flex-wrap items-start justify-start gap-2">
+                    {bordersList.map((border:any, index:number) => (
+                        <Link
+                            href={`/details/${border.name.common}`}
+                            key={index}
+                            onClick={() => dispatch({ type: "get_country_details", value: border.name.common })}
+                            className="bg-white py-3 px-4 cursor-pointer rounded-md text-xs tracking-wide shadow-lg 
+                            dark:bg-gray-800 dark:text-white"
+                        >
+                            {border.name.common}
+                        </Link>
+                    ))}
+                </ul>
+            </>
+        );
+    }
+
     return (
         <div className="p-8 dark:text-white dark:bg-Dark-Mode-Background h-screen">
             <BackButton/>
@@ -39,28 +76,7 @@ const CountryDetails =({ })=> {
                         <li>Region : {item.region}</li>
                         <li>Subregion : {item.subregion}</li>
                     </ul>
-                    {item.borders && (
-                        <>
-                            <h3 className="text-gray-900 font-bold text-lg mb-2 dark:text-white">
-                                Borders :
-                            </h3>
-                            <ul className="flex flex-wrap items-start justify-start gap-2">
-                                {item.borders.length > 0 ? (
-                                    item.borders.map((border:string, index:number) => (
-                                        <li
-                                            key={index}
-                                            className="bg-white py-3 px-4 rounded-md text-xs tracking-wide shadow-lg 
-                                            dark:bg-gray-800 dark:text-white "
-                                        >
-                                            {border}
-                                        </li>
-                                    ))
-                                ) : (
-                                    <span>No Borders</span>
-                                )}
-                            </ul>
-                        </>
-                    )}
+                    {renderBorders()}
                 </section>
             </div>
         </div>

@@ -3,13 +3,13 @@
 import React,{ useState, useEffect } from "react";
 
 interface PaginationProps {
-    totalPages: number;
+    total: number;
     resultsPerPage:number;
     setResultsPerPage:(data:number) => void;
 }
 
-const PageSizeSelector = ({resultsPerPage,setResultsPerPage, totalPages }: PaginationProps) => {
-    const pageSize = [8, 12, 16, 20, 25];
+const PageSizeSelector = ({resultsPerPage,setResultsPerPage,total}: PaginationProps) => {
+    const pageSize = [8, 12, 24, 36, 48];
     
     const handlePageSize = (e:any)=>{
         e.preventDefault();
@@ -32,7 +32,7 @@ const PageSizeSelector = ({resultsPerPage,setResultsPerPage, totalPages }: Pagin
                 ))}
             </select>
 
-            <p className="text-content">Total: {totalPages} results</p>
+            <p className="text-content">Total: {total} results</p>
         </div>
     );
 };

@@ -36,7 +36,7 @@ const Main = ()=> {
                 currentPage={currentPage}
             />
             <PageSizeSelector 
-                totalPages={totalPages} 
+                total={filteredCountries.length} 
                 resultsPerPage={resultsPerPage}
                 setResultsPerPage={setResultsPerPage}
             />            
