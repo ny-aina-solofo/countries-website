@@ -5,7 +5,7 @@ import { countriesReducer,CountriesAction} from "./reducer";
 import { ThemeProvider } from "./ThemeProvider";
 
 
-const CountriesContext = createContext<{ filteredCountries: any[]; selectedCountry: any } | undefined>(undefined);
+const CountriesContext = createContext<{allCountries:any[], filteredCountries: any[]; selectedCountry: any } | undefined>(undefined);
 const CountriesDispatchContext = createContext<Dispatch<CountriesAction> | undefined>(undefined);
 
 export const CountriesProvider = ({ children }: { children: React.ReactNode }) => {
@@ -25,6 +25,7 @@ export const CountriesProvider = ({ children }: { children: React.ReactNode }) =
     return (
         <CountriesContext.Provider 
             value={{ 
+                allCountries:state.allCountries,
                 filteredCountries: state.filteredCountries,
                 selectedCountry: state.selectedCountry
             }}

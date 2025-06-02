@@ -4,58 +4,28 @@ import React,{ useState, useEffect } from "react";
 import BackButton from './BackButton';
 import Image from "next/image";
 import { useCountries,useCountriesDispatch } from "@/context/countriesProvider";
-import Link from "next/link";
+import CountryBorders from "./CounrtyBorders";
 
-const CountryDetails =({ })=> {
-    
-    const dispatch = useCountriesDispatch();
+interface Currency  {
+    name: string;
+    symbol: string;
+};
+
+const CountryDetails =({ })=> {    
     const { selectedCountry } = useCountries();
 
     if (!selectedCountry) {
         return <div className="p-8">Aucun pays sélectionné.</div>;
     }
     const item = selectedCountry;
-
-    const countries = useCountries();
-    const { filteredCountries } = countries;
-    const selectedBorders = item.borders;
-    
-    const renderBorders= ()=> {
-        if (!selectedBorders || selectedBorders.length === 0 || selectedBorders === undefined) {
-            return <p>No Borders</p>;
-        }
-        const bordersList = selectedBorders.map((border:string) => {
-            const bordersName = filteredCountries.find((countries) => countries.cca3 === border);
-            return bordersName;
-        });
-        return (
-            <>
-                <h3 className="text-gray-900 font-bold text-lg mb-2 dark:text-white">
-                    Borders :
-                </h3>
-                <ul className="flex flex-wrap items-start justify-start gap-2">
-                    {bordersList.map((border:any, index:number) => (
-                        <Link
-                            href={`/details/${border.name.common}`}
-                            key={index}
-                            onClick={() => dispatch({ type: "get_country_details", value: border.name.common })}
-                            className="bg-white py-3 px-4 cursor-pointer rounded-md text-xs tracking-wide shadow-lg 
-                            dark:bg-gray-800 dark:text-white"
-                        >
-                            {border.name.common}
-                        </Link>
-                    ))}
-                </ul>
-            </>
-        );
-    }
+    const currencies: { [code: string]: Currency } = item.currencies;
 
     return (
         <div className="p-8 dark:text-white dark:bg-Dark-Mode-Background h-screen">
             <BackButton/>
             <div
                 key={item.population}
-                className="grid grid-cols-1 gap-8 md:grid-cols-2 md:place-items-center mt-20"
+                className="grid grid-cols-2 gap-8 md:grid-cols-2  mt-10 mb-10"
             >
                 <section>
                     <Image 
@@ -63,22 +33,38 @@ const CountryDetails =({ })=> {
                         alt={item.name.common}
                         width={700}
                         height={500}
-                        className="w-full"    
+                        className="aspect-[18/11] w-full object-cover"    
                     />
                 </section>
-                <section>
-                    <h1 className="mb-8 font-bold text-gray-900 dark:text-white text-4xl lg:text-6xl">
+                <section className="ms-10">
+                    <h1 className="mb-5 font-bold text-gray-900 text-2xl dark:text-white">
                         {item.name.official}
                     </h1>
-                    <ul className="my-4 flex flex-col items-start justify-start gap-2 text-slate-700 dark:text-white">
-                        <li>Capital : {item.capital[0]}</li>
-                        <li>Population : {item.population.toLocaleString()}</li>
-                        <li>Region : {item.region}</li>
-                        <li>Subregion : {item.subregion}</li>
+                    <ul className="flex flex-col gap-2 text-slate-700 dark:text-white">
+                        <li><span className="font-bold">Capital :</span> &nbsp; {item.capital[0]}</li>
+                        <li><span className="font-bold">Population :</span> &nbsp; {item.population.toLocaleString()}</li>
+                        <li><span className="font-bold">Region :</span> &nbsp; {item.region}</li>
+                        <li><span className="font-bold">Subregion :</span> &nbsp; {item.subregion}</li>
+                        <li>
+                            <span className="font-bold">Languages :</span> &nbsp; 
+                            {Object.values(item.languages).join(", ")}
+                        </li>
+                        <li>
+                            <span className="font-bold">Currencies :</span> &nbsp; 
+                            {Object.entries(currencies).map(([code, { name, symbol }]) => (
+                                <span key={code}>
+                                {name} ({symbol}){" "}
+                                </span>
+                            ))}
+                        </li>
+                        <li><span className="font-bold">Area :</span> &nbsp; {item.area}</li>
+                        <li><span className="font-bold">Timezones :</span> &nbsp; {item.timezones[0]}</li>
+                        <li><span className="font-bold">TLD :</span> &nbsp; {item.tld[0]}</li>
                     </ul>
-                    {renderBorders()}
                 </section>
             </div>
+            <CountryBorders/>
+
         </div>
     )
 }

@@ -30,7 +30,7 @@ export default function RootLayout({
                 <body
                     // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
                     className="bg-Light-Mode-Background dark:bg-Dark-Mode-Background text-Light-Mode-Text 
-                        dark:text-white
+                        dark:text-white relative
                     "
                 >
                     <Header/>

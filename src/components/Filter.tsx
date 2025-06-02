@@ -24,8 +24,8 @@ const Filter = () => {
                 Filter by Region
             </label>
             <select 
-                className="ms-3 bg-white w-52 py-3 px-4 outline-none rounded-lg text-gray-600 
-                    dark:bg-Dark-Mode-Elements dark:text-white    
+                className="ms-3 bg-white w-52 p-5 shadow-lg outline-none rounded-lg text-gray-600 
+                    dark:bg-Dark-Mode-Elements dark:text-white cursor-pointer    
                 "
                 name="filter" id="filter"
                 value={selectedValue} 

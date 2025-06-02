@@ -16,7 +16,7 @@ const CountryCard =({ flags,name,population,region,subregion }:CountryCardProps)
     const dispatch = useCountriesDispatch();
     return (
         <div 
-            className="bg-white rounded-lg overflow-hidden h-full dark:bg-Dark-Mode-Elements 
+            className="bg-white rounded-lg shadow-lg  overflow-hidden h-full dark:bg-Dark-Mode-Elements 
                 dark:text-white"
         >
             <Link 

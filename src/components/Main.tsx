@@ -21,7 +21,7 @@ const Main = ()=> {
 
     return (
         <main>
-            <section className="px-20 mt-12 flex flex-wrap justify-between gap-4">
+            <section className="px-20 mt-30 flex flex-wrap justify-between gap-4">
                 <SearchBar/>
                 <Filter/>
             </section>

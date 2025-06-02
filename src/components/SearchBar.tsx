@@ -3,6 +3,7 @@
 import React,{ useState, useEffect } from "react";
 import iconSearch from "@/assets/search-sharp.svg";
 import { useCountries,useCountriesDispatch } from "@/context/countriesProvider";
+import iconCross from "@/assets/icon-cross.svg";
 
 const SearchBar = ()=> {
     const dispatch = useCountriesDispatch();
@@ -23,14 +24,14 @@ const SearchBar = ()=> {
             onSubmit={searchCountry}
             autoComplete="off"
         >
-            <div className="flex bg-white items-center justify-between border-none 
-                    rounded-lg max-w-4xl dark:bg-Dark-Mode-Elements      
+            <div className="flex bg-white items-center justify-between border-none  
+                    rounded-lg max-w-4xl shadow-lg dark:bg-Dark-Mode-Elements      
                 "
             >
                 <img className="ms-4" src={iconSearch.src} width="20px" height="20px" alt="search icon" />
                 <input
                     type="text"
-                    className="py-3 px-4 text-gray-600 placeholder-gray-600 w-full 
+                    className="p-5 text-gray-600 placeholder-gray-600 w-full 
                         rounded outline-none transition-all duration-200
                         dark:placeholder-white dark:text-white
                     "
@@ -39,19 +40,21 @@ const SearchBar = ()=> {
                     onChange={searchCountry}
                     aria-label="Search for a country"
                 />
-                {searchText !== "" && (
-                    <button
-                        type="button"
-                        className="bg-Light-Mode-Background items-center py-1 px-2 mx-2 rounded-full cursor-pointer
-                            bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-white 
-                            hover:bg-gray-300 dark:hover:bg-gray-600 
-                            transition duration-200 ease-in-out
-                        "
-                        onClick={resetSearch}
-                    >
-                        x
-                    </button>
-                )}
+                <div className="px-4">
+                    {searchText !== "" && (
+                        <button
+                            type="button"
+                            className="cursor-pointer"
+                            onClick={resetSearch}
+                        >
+                            <img 
+                                className="" 
+                                src={iconCross.src} alt="cross icon" 
+                                width="15px" height="15px"    
+                            />
+                        </button>                    
+                    )}
+                </div>
             </div>
         </form>
     )

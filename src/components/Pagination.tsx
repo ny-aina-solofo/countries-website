@@ -33,7 +33,7 @@ const Pagination = ({totalPages,setCurrentPage,currentPage,}:PaginationProps) =>
                 <button
                     key={1}
                     onClick={(e) => paginate(1, e)}
-                    className="text-content border px-3 py-2 cursor-pointer"
+                    className="text-content border-1-0 shadow-lg bg-white px-3 py-2 cursor-pointer dark:bg-Dark-Mode-Elements"
                 >
                     1
                 </button>
@@ -56,7 +56,10 @@ const Pagination = ({totalPages,setCurrentPage,currentPage,}:PaginationProps) =>
                 <button
                     key={i}
                     onClick={(e) => paginate(i, e)}
-                    className={`text-content border px-3 py-2 cursor-pointer${isCurrent ? "bg-gray-200 font-bold underline dark:bg-gray-900" : ""}`}
+                    className={`text-content border-1-0 shadow-lg bg-white px-3 py-2 cursor-pointer
+                        ${isCurrent ? "bg-gray-200 font-bold underline dark:bg-gray-900" : ""}
+                        dark:bg-Dark-Mode-Elements
+                    `}
                 >
                     {i}
                 </button>
@@ -68,7 +71,7 @@ const Pagination = ({totalPages,setCurrentPage,currentPage,}:PaginationProps) =>
                     <span
                         key="ellipsis-end"
                         aria-hidden="true"
-                        className="text-content cursor-not-allowed px-3 py-2 ring-1 ring-gray-300 dark:ring-gray-700"
+                        className="text-content cursor-not-allowed px-3 py-2 dark:ring-gray-700"
                     >
                         ...
                     </span>,
@@ -78,7 +81,7 @@ const Pagination = ({totalPages,setCurrentPage,currentPage,}:PaginationProps) =>
                 <button
                     key={totalPages}
                     onClick={(e) => paginate(totalPages, e)}
-                    className={`text-content border px-3 py-2 cursor-pointer`}
+                    className={`text-content border-1-0 shadow-lg bg-white px-3 py-2 cursor-pointer dark:bg-Dark-Mode-Elements`}
                 >
                     {totalPages}
                 </button>

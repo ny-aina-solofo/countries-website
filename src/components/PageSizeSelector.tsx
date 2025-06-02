@@ -20,7 +20,8 @@ const PageSizeSelector = ({resultsPerPage,setResultsPerPage,total}: PaginationPr
         <div className="my-8 flex items-center justify-center gap-2 flex-wrap">
             <p className="text-content">Results per page: </p>
             <select
-                className="interactive text-content mx-4 max-w-[25rem] rounded-md px-3 py-2 shadow-lg"
+                className="bg-white dark:bg-Dark-Mode-Elements text-content mx-4 max-w-[25rem] 
+                    rounded-md px-4 py-2 shadow-lg cursor-pointer"
                 value={resultsPerPage}
                 onChange={handlePageSize}
                 aria-label="Results per page"
