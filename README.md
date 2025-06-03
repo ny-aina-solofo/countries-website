@@ -32,6 +32,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 - Live Site URL: [https://countries-website-theta.vercel.app/](https://countries-website-theta.vercel.app/)
 
 <br>
+
 ## Table of contents
 
 - [Overview](#overview)
@@ -43,6 +44,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [Useful resources](#useful-resources)
 - [Author](#author)
 &nbsp;
+
 ## Overview
 
 ### 📝  The challenge
