@@ -28,7 +28,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 
 <h2 align="center">Links</h2>
 
-- Solution URL: [REST Countries API (Next.js + TypeScript + Tailwind) | Frontend Mentor]()
+- Solution URL: [REST Countries API (Next.js + TypeScript + Tailwind) | Frontend Mentor](https://www.frontendmentor.io/solutions/countries-website-iGOcIZEc9v)
 - Live Site URL: [https://countries-website-theta.vercel.app/](https://countries-website-theta.vercel.app/)
 
 <br>
