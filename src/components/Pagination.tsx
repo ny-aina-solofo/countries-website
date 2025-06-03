@@ -94,7 +94,9 @@ const Pagination = ({totalPages,setCurrentPage,currentPage,}:PaginationProps) =>
     return (
         <div className="mb-4 flex justify-center flex-wrap gap-y-2 gap-x-[.0625rem]">
             <button
-                className={`text-content px-3 py-2  cursor-pointer ${isFirstPage ? "!dark:bg-gray-800 cursor-not-allowed" : ""
+                className={`text-content border-1-0 shadow-lg  bg-white px-3 py-2  
+                    dark:bg-Dark-Mode-Elements cursor-pointer 
+                    ${isFirstPage ? "!dark:bg-gray-800 cursor-not-allowed" : ""
                 }`}
                 onClick={(e)=>paginate((currentPage-1),e)}
                 disabled={isFirstPage}
@@ -105,7 +107,9 @@ const Pagination = ({totalPages,setCurrentPage,currentPage,}:PaginationProps) =>
             {renderPageNumbers()}
 
             <button
-                className={`text-content px-3  py-2  cursor-pointer ${isLastPage ? "!dark:bg-gray-800 cursor-not-allowed" : ""
+                className={`text-content border-1-0 shadow-lg bg-white px-3  py-2  
+                    dark:bg-Dark-Mode-Elements cursor-pointer 
+                    ${isLastPage ? "!dark:bg-gray-800 cursor-not-allowed" : ""
                 }`}
                 onClick={(e)=>paginate((currentPage+1),e)}
                 disabled={isLastPage}

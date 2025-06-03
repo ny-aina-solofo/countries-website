@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Countries website",
     description: "A modern web app to explore countries information",
     icons: {
-        icon: "/location-outline.svg",
+        icon: "./globe.svg",
     }
 };
 
